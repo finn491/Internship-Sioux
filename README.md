@@ -1,2 +1,14 @@
-# Internship-Sioux
-Bayesian Grey-Box System Identification: Parameter Estimation on 1D Thermal Setup.
+# Internship-Sioux: Bayesian Grey-Box System Identification: Parameter Estimation on 1D Thermal Setup.
+
+From 2022-05-01 to 2022-07-31, I worked on this project for [Sioux Mathware](https://www.sioux.eu/competences/mathware/), supervised by [Wouter Kouw](https://github.com/wmkouw). I applied Bayesian techniques to identify parameters in various grey-box models for a 1D thermal setup. At the same time, another intern was making a physical version of the setup. It is a (small) part of Sioux' contribution to [IMOCO](https://www.imoco4e.eu/overview/consortium/), a European consortium that was created to make system control more intelligent. For precision control it is important to be able to accurately predict the thermal evolution of the system, since varying temperatures will cause material properties (e.g. density) to vary; if we can predict the temperatures in the system, we can compensate for the variations in our controller. 
+
+My contribution is mostly exploration. Most significantly, I found that a certain combination of packages ([Turing.jl](https://github.com/TuringLang/Turing.jl) and [DifferentialEquations.jl](https://github.com/SciML/DifferentialEquations.jl) for Julia) make it easy to apply the Bayesian technique MCMC to many grey-box models. Conversely, I found that another popular technique, VB, is somewhat more difficult to apply. VB is much faster than MCMC, however, so it might still be worth while looking into. 
+
+This repo houses a number of self-contained Jupyter notebooks:
+- [Bayesics_Coin.ipynb](https://github.com/finn491/Internship-Sioux/blob/main/Bayesics_Coin.ipynb): introductory notebook, in which we perform exact Bayesian inference to identify the bias of a coin and tackle the multi-armed bandit problem;
+- [Explore_UKF.ipynb](https://github.com/finn491/Internship-Sioux/blob/main/Explore_UKF.ipynb): exploratory notebook, in which we try to apply an Unscented Kalman Filter from [ForneyLab.jl](https://github.com/biaslab/ForneyLab.jl) to a simplified version of the problem;
+- [Explore_VB.ipynb](https://github.com/finn491/Internship-Sioux/blob/main/Explore_VB.ipynb): exploratory notebook, in which we try to apply a Variational Bayes using [BayesPy](https://github.com/bayespy/bayespy) to a simplified version of the problem;
+- [Explore_MCMC.ipynb](https://github.com/finn491/Internship-Sioux/blob/main/Explore_MCMC.ipynb): exploratory notebook, in which we try to apply a Markov Chain Monte Carlo using [Turing.jl](https://github.com/TuringLang/Turing.jl) and [DifferentialEquations.jl](https://github.com/SciML/DifferentialEquations.jl) to a simplified version of the problem;
+- [sysid-thermal-AR.ipynb](https://github.com/finn491/Internship-Sioux/blob/main/sysid-thermal-AR.ipynb): main notebook, in which we apply MCMC to test multiple combinations of models for data generation and parameter estimation.
+
+My report, which tends to go into more detail, for instance about the results, than the notebooks, can be found here: https://www.overleaf.com/read/qyzzygdpsytx.
